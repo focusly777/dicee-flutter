@@ -23,44 +23,45 @@ void main() {
 }
 
 class DicePage extends StatefulWidget {
-  @override
+  @override //statefulwidget으로 설정
   _DicePageState createState() => _DicePageState();
 }
 
 class _DicePageState extends State<DicePage> {
-  int leftDiceNumber = 1;
-  int rightDiceNumber = 1;
+  int leftDiceNumber = 1; // 첫시작 주사위 변수 지정
+  int rightDiceNumber = 1; // 첫시작 주사위 변수 지정
 
   void changeDiceFace() {
     setState(() {
       leftDiceNumber = Random().nextInt(6) + 1;
       rightDiceNumber = Random().nextInt(6) + 1;
     });
-  }
+  } // 함수모음함수
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Row(
-        children: <Widget>[
+        children: [
           Expanded(
+            // Expanded로 양쪽균형잡히게 배열
             child: FlatButton(
               child: Image.asset(
                 'images/dice$leftDiceNumber.png',
               ),
               onPressed: () {
-                changeDiceFace();
+                changeDiceFace(); //지정한함수
               },
             ),
           ),
-          //Get students to create the second die as a challenge
           Expanded(
+            // Expanded로 양쪽균형잡히게 배열
             child: FlatButton(
               child: Image.asset(
                 'images/dice$rightDiceNumber.png',
               ),
               onPressed: () {
-                changeDiceFace();
+                changeDiceFace(); //지정한함수
               },
             ),
           ),
